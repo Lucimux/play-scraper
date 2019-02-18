@@ -2,7 +2,7 @@
 
 import logging
 try:
-    from urllib import quote_plus
+    from urllib import quote_plus, parse
     from urlparse import urljoin
 except ImportError:
     from urllib.parse import urljoin, quote_plus
@@ -208,7 +208,7 @@ class PlayScraper(object):
         data = generate_post_data(0, 0, pagtok)
 
         self.params.update({
-            'q': quote_plus(query),
+            'q': parse.unquote(query),
             'c': 'apps',
         })
 
